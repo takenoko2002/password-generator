@@ -1,0 +1,81 @@
+
+
+import tkinter as tk
+
+# メインウィンドウ作成
+root = tk.Tk()
+
+#メインウィンドウのタイトルを変更
+root.title("Password Generator")
+
+#メインウィンドウを640x480にする
+root.geometry("640x480")
+
+#ラベルを追加
+label = tk.Label(root, text="Hello,World")
+#表示
+label.grid()
+
+#ボタンの表示
+button = tk.Button(root, text="ボタン", command="pushed")
+button.grid()
+
+#commandに関数を指定するとクリックしたときにその関数を呼び出せる
+def pushed():
+ print("clicked")
+
+button2 = tk.Button(root, text="クリックしてね", command=pushed)
+button2.grid()
+
+
+#ボタンクリック後に押されたよとボタンのテキストを変更する
+def pushed2(self):
+    self["text"] = "押されたよ"
+
+button3 = tk.Button(root, text="ボタン", command= lambda : pushed2(button3))
+button3.grid()
+
+#rootを表示し無限ループ
+root.mainloop()
+
+#パスワード生成方法(random)
+import randam
+import string
+
+randam.choiceは文字列、リスト、タプルを引数に取って中の文字を一つ返します。
+a = ''
+a.join(ramdom.choice('abcdefg'))
+print(a)
+
+アルファベットをいちいち打ち込むのは愚の骨頂なのでstringモジュールを使います。
+stringモジュールには数字、文字、特殊文字の一覧を取得することができます。
+アルファベット全般ならstring.ascii_letters、
+小文字ならstring.ascii_lowercase、
+数字ならstring.digitsに格納されています。
+記号はstring.punctuation
+
+print(string.ascii_letters)
+print(string.digits)
+print(string.punctuation)
+
+上は「'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'」
+真ん中は「'0123456789'」が出力されます。
+下は「'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'」
+
+これをrandomの引数に指定することで適当なパスワード候補を作ります。
+import random
+import string
+password = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(8)])
+
+
+#パスワード生成方法(secrets)←こっちのほうがセキュリティ向けの強い乱数を生成できる
+ 使い方はrandamと変わらない
+
+import secrets
+import string
+
+password = ''.join([secrets.choice(string.ascii_letters + string.digits) for i in range(8)])
+
+関数化
+def pass_gen(size):
+    password = ''.join([secrets.choice(string.ascii_letters + string.digits) for i in range(size)])
