@@ -17,15 +17,21 @@ label = tk.Label(root, text="下のボタンを押すとパスワードを生成
 #表示
 label.grid()
 
+#パスワードの文字列を指定
+#エントリー
+EditBox = tk.Entry()
+EditBox.insert(tk.END,"10")
+EditBox.grid()
+
 #commandに関数を指定するとクリックしたときにその関数を呼び出せる
-def pass_gen(size=8):
-    password = ''.join([secrets.choice(string.ascii_letters + string.digits) for i in range(size)])
+def pass_gen(pass_string = string.ascii_letters + string.digits,size=8):
+    password = ''.join([secrets.choice(pass_string) for i in range(size)])
     #生成したパスワードを表示
     label2 = tk.Label(root, text=password)
     label2.grid()
 
-#ボタンの表示
-button = tk.Button(root, text="パスワードを生成", command= lambda : pass_gen())
+#ボタンの表示(パスワード生成ボタン)
+button = tk.Button(root, text="パスワードを生成", command= lambda : pass_gen('abcdefghijklmn123456789',int(EditBox.get())))
 button.grid()
 
 #rootを表示し無限ループ
