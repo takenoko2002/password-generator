@@ -1,4 +1,3 @@
-
 import tkinter as tk
 import secrets
 import string 
@@ -28,7 +27,7 @@ label2.grid()
 #パスワードを生成
 def pass_gen(pass_string = string.ascii_letters + string.digits,size=8):
     password = ''.join([secrets.choice(pass_string) for i in range(size)])
-    ##ラベルを追加
+    ##ラベルを更新
     global label2
     label2["text"] = password
 
@@ -36,29 +35,5 @@ def pass_gen(pass_string = string.ascii_letters + string.digits,size=8):
 button = tk.Button(root, text="パスワードを生成", command= lambda : pass_gen('abcdefghijklmn123456789',int(EditBox.get())))
 button.grid()
 
-
-
-#非表示するボタンの表示
-button2 = tk.Button(root, text="パスワード生成ボタンを削除",command=label2.destroy)
-button2.grid()
-
 #rootを表示し無限ループ
 root.mainloop()
-
-
-
-import Tkinter as tk
-
-root = tk.Tk()
-
-def add_new():
-    b = tk.Button(root,text="Click to destroy")
-    b.pack()
-    b.config(command=b.pack_forget) 
-
-b = tk.Button(root,text="Add_new",command=add_new)
-b.pack()
-root.mainloop()
-
-
-
