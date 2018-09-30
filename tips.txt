@@ -86,3 +86,12 @@ EditBox.insert(tk.END,"10")
 EditBox.grid()
     #入力された値を取得
     EditBox.get()
+
+#非表示するボタンの表示
+##button2 = tk.Button(root, text="パスワード生成ボタンを削除",command=button.destroy)
+##button2.grid()
+
+
+##ラベルのテキスト部分を更新
+global label2
+label2["text"] = password
